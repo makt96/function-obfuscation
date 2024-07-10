@@ -1,0 +1,28 @@
+[ GetModuleHandle ]
+https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlea
+
+HMODULE GetModuleHandleA(
+  LPCSTR lpModuleName
+);
+
+[ GetProcAddress ]
+https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress
+
+FARPROC GetProcAddress(
+  HMODULE hModule,
+  LPCSTR  lpProcName
+);
+
+[ VirtualAlloc ]
+https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualalloc
+
+LPVOID VirtualAlloc(
+  LPVOID lpAddress,
+  SIZE_T dwSize,
+  DWORD  flAllocationType,
+  DWORD  flProtect
+);
+
+HMODULE hModule = GetModuleHandle("Kernel32.dll");
+WINAPI * ptrVirtualAlloc = GetProcAddress(hModule, "VirtualAlloc");
+ptrVirtualAlloc(  LPVOID lpAddress,  SIZE_T dwSize,  DWORD  flAllocationType,  DWORD  flProtect);
